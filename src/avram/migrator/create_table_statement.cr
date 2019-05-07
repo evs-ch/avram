@@ -66,6 +66,8 @@ class Avram::Migrator::CreateTableStatement
   private def initial_table_statement
     id_column_type = if @primary_key_type == PrimaryKeyType::UUID
                        "uuid"
+                     elsif @primary_key_type == PrimaryKeyType::BigSerial
+                       "bigserial"
                      else
                        "serial"
                      end
